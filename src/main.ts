@@ -13,6 +13,6 @@ async function bootstrap() {
   app.setBaseViewsDir(join(__dirname, '..', 'views')); // 템플릿 엔진 위치
   app.setViewEngine('hbs'); // hbs 엔진 사용할 것
 
-  await app.listen(3000);
+  await app.listen(80);
 }
 bootstrap();

@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
 import { AppController } from './app.controller';
+import { ChatsModule } from './chats/chats.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { AppController } from './app.controller';
       pass: 'chatpass',
       dbName: 'chattings',
     }),
+    ChatsModule,
   ],
   controllers: [AppController],
   providers: [],
