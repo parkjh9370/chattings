@@ -1,4 +1,4 @@
-const socket = io('/');
+const socket = io('/chattings');
 
 const getElementById = (id) => document.getElementById(id) || null;
 
@@ -9,6 +9,14 @@ const formElement = getElementById('chat_form');
 
 function helloUser() {
   const username = prompt('What is your name?');
+
+  socket.emit('new_user', username, (data) => {
+    console.log(data);
+  });
+
+  socket.on('hello_user', (data) => {
+    console.log(data);
+  });
 }
 
 function init() {
