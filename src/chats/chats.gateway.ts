@@ -11,7 +11,9 @@ import {
 import { Logger } from '@nestjs/common';
 
 @WebSocketGateway({ namespace: 'chattings' })
-export class ChatsGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
+export class ChatsGateway
+  implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect
+{
   private logger = new Logger('chat');
 
   constructor() {
@@ -43,5 +45,16 @@ export class ChatsGateway implements OnGatewayInit, OnGatewayConnection, OnGatew
     socket.emit('hello_user', 'hello ' + username);
 
     return username;
+  }
+
+  @SubscribeMessage('submit_chat')
+  handleSubmitChat(
+    @MessageBody() chat: string,
+    @ConnectedSocket() socket: Socket,
+  ) {
+    socket.broadcast.emit('new_chat', {
+      chat,
+      username: socket.id,
+    });
   }
 }
