@@ -9,7 +9,7 @@ export class AppController {
       data: {
         title: 'Chattings',
         copyright: 'jaeHyeon Park',
-      }
+      },
     };
   }
 }

@@ -1,7 +1,8 @@
+import mongoose from 'mongoose';
 import { Module, NestModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import mongoose from 'mongoose';
+
 import { AppController } from './app.controller';
 import { ChatsModule } from './chats/chats.module';
 
