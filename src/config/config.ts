@@ -5,8 +5,6 @@ dotenv.config({
   path: path.resolve(
     process.env.NODE_ENV === 'production'
       ? '.env.production'
-      : process.env.NODE_ENV === 'local_production'
-      ? '.env.local_production'
       : '.env.development',
   ),
 });
