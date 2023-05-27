@@ -5,16 +5,17 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 import { AppController } from './app.controller';
 import { ChatsModule } from './chats/chats.module';
+import { config } from './config/config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    MongooseModule.forRoot(`mongodb://mongo_db/?retryWrites=false`, {
+    MongooseModule.forRoot(`${config.MONGO.HOST}/?retryWrites=false`, {
       useNewUrlParser: true,
-      user: 'chatuser',
-      pass: 'chatpass',
+      user: config.MONGO.USER,
+      pass: config.MONGO.PASSWORD,
       dbName: 'chattings',
     }),
     ChatsModule,

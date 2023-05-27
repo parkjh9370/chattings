@@ -10,18 +10,19 @@ services:
     depends_on:
       - mongodb
     ports:
+      - '443:80'
       - '80:80'
     volumes:
       - ./:/app
     command:
-      - "yarn"
-      - "start:dev"
+      - 'yarn'
+      - 'start:dev'
 
   mongodb:
     container_name: mongo_db
     image: mongo:4.2.1
     ports:
-      - "27717:27017"
+      - '27717:27017'
     restart: on-failure
     volumes:
       - ./data/db:/data/db
